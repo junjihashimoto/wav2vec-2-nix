@@ -1,0 +1,13 @@
+sndfile
+pyarrow==1.0.0
+numba==0.48.0
+Cython
+torch
+datasets
+transformers
+torchaudio
+librosa
+jiwer
+mecab-python3
+soundfile
+unidic-lite
