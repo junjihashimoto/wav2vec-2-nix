@@ -2,20 +2,19 @@
   description = "torchvision-fasterrcnn";
 
   nixConfig = {
-    substituters = [
-      # https://iohk.cachix.org
-      https://hydra.iohk.io
-    ];
-    trusted-public-keys = [
-      hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=
-    ];
+#    substituters = [
+#      https://hydra.iohk.io
+#    ];
+#    trusted-public-keys = [
+#      hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=
+#    ];
     bash-prompt = "\[nix-develop\]$ ";
   };
   
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?rev=8deeda2c607a3f64d2fa935f1ad9d29a9b88dab4";
+    nixpkgs.url = "github:nixos/nixpkgs?rev=1ca6b0a0cc38dbba0441202535c92841dd39d1ae";
     flake-utils.url = "github:numtide/flake-utils";
-    mach-nix.url = "github:DavHau/mach-nix";
+    mach-nix.url = "github:DavHau/mach-nix?rev=4433f74a97b94b596fa6cd9b9c0402104aceef5d";
     hasktorch-datasets.url = "github:hasktorch/hasktorch-datasets?rev=056451ca585f2ecdf1c0b3cfa06ac6cb2a9f2efd";
   };
 

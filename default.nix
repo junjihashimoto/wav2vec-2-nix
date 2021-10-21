@@ -4,7 +4,6 @@
 , mach-nix
 }:
 let
-  lib = pkgs.lib;
   myPython =
     mach-nix.mkPython rec {
       requirements = builtins.readFile ./requirements.txt;
