@@ -12,7 +12,8 @@
   };
   
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?rev=1ca6b0a0cc38dbba0441202535c92841dd39d1ae";
+#    nixpkgs.url = "github:nixos/nixpkgs?rev=1ca6b0a0cc38dbba0441202535c92841dd39d1ae";
+    nixpkgs.url = "github:junjihashimoto/nixpkgs?rev=1fece73befd475415b409ef8867ca13ea74c2f58";
     flake-utils.url = "github:numtide/flake-utils";
     mach-nix.url = "github:DavHau/mach-nix?rev=4433f74a97b94b596fa6cd9b9c0402104aceef5d";
     hasktorch-datasets.url = "github:hasktorch/hasktorch-datasets?rev=056451ca585f2ecdf1c0b3cfa06ac6cb2a9f2efd";
