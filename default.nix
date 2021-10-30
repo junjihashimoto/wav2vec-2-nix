@@ -14,7 +14,17 @@ let
 #        soundfile = "nixpkgs";
 #        mecab-python3 = "wheel";
 #      };
-#    };
+  #    };
+  # libsndfile = pkgs.libsndfile.overrideAttrs (old:{
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "arthurt";
+  #     repo = "libsndfile";
+  #     rev = "7d61467fae33b11a705d134af13bbb4f6f8064c0";
+  #     sha256 = "1cy1058yd7s1aa8fw3yjgfazq76asnb943vs74gvpv1csmi29rgr";
+  #   };
+  #   buildInputs = old.buildInputs ++ [pkgs.lame];
+  # }
+  # );
   sdist = { name
          , version
          , sha256 ? ""
@@ -103,25 +113,25 @@ let
     sha256 = "0yv30aprc8icwmab16kv43hps27j3vli1b3wwyakp78pp8c3fs19";
     deps = [];
   };
-  socks = sdist {
-    name = "socks";
-    version = "0";
-    sha256 = "0rgpxn8wjp0mpmrz26m9q1352a96mvscf00a6v0021kk4139nzkj";
-    deps = [];
-  };
-  gdown = (sdist {
-    name = "gdown";
-    version = "3.12.2";
-    sha256 = "1b3b710wrg98wgnqx1qgzmkkkcmlzgw5xwlvjg78vzbvwl0i6fjb";
-    deps = with pkgs.python3Packages; [filelock six socks tqdm requests];
-  }).overrideAttrs ( old:{
-    patchPhase = ''
-      grep -rn socks .
-      sed -i -e 's/requests\[socks\]/requests/g' \
-       ./gdown.egg-info/requires.txt \
-       ./setup.py
-    '';
-  });
+  # socks = sdist {
+  #   name = "socks";
+  #   version = "0";
+  #   sha256 = "0rgpxn8wjp0mpmrz26m9q1352a96mvscf00a6v0021kk4139nzkj";
+  #   deps = [];
+  # };
+  # gdown = (sdist {
+  #   name = "gdown";
+  #   version = "3.12.2";
+  #   sha256 = "1b3b710wrg98wgnqx1qgzmkkkcmlzgw5xwlvjg78vzbvwl0i6fjb";
+  #   deps = with pkgs.python3Packages; [filelock six socks tqdm requests];
+  # }).overrideAttrs ( old:{
+  #   patchPhase = ''
+  #     grep -rn socks .
+  #     sed -i -e 's/requests\[socks\]/requests/g' \
+  #      ./gdown.egg-info/requires.txt \
+  #      ./setup.py
+  #   '';
+  # });
   homoglyphs = sdist {
     name = "homoglyphs";
     version = "2.0.4";
@@ -164,6 +174,7 @@ rec {
   train = pkgs.stdenv.mkDerivation {
     name = "train";
     src = ./src;
+    buildInputs = [pkgs.ffmpeg];
     buildPhase = ''
       mkdir -p $out/output
       mkdir -p cache
