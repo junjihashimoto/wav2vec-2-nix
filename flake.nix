@@ -45,6 +45,7 @@
         };
         packages = {
           dataset = cv-ja;
+          train = wav2vec.train;
         };
 
         # defaultPackage = self.packages.${system}.${packageName};
